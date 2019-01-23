@@ -1,0 +1,266 @@
+$ ###############################################################
+#                          WARNING!!!!                        #
+# This is a sandbox environment. Using personal credentials   #
+# is HIGHLY! discouraged. Any consequences of doing so are    #
+# completely the user's responsibilites.                      #
+#                                                             #
+# The PWD team.                                               #
+###############################################################
+[node1] (local) root@192.168.0.18 ~
+
+[node1] (local) root@192.168.0.18 ~
+$
+[node1] (local) root@192.168.0.18 ~
+$ docker swarm init
+Error response from daemon: could not choose an IP address to advertise since this system has multiple addresses on different interfaces (172.18.0.6 on eth1 and 192.168.0.18 on eth0) - specify one with --advertise-addr
+[node1] (local) root@192.168.0.18 ~
+$ docker swarm init --advertise-addr 192.168.0.18
+Swarm initialized: current node (jlwwu0jz5iqgb7ovt02sgdi8q) is now a manager.
+
+To add a worker to this swarm, run the following command:
+
+    docker swarm join --token SWMTKN-1-348u9em9op8fs9hrzg0cghtibsy4ipxiz7buip99i0fm1zsays-5iyebd6b50tgkpgag7u5cm01h 192.168.0.18:2377
+
+To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
+
+[node1] (local) root@192.168.0.18 ~
+$ docker swarm join-token manager
+To add a manager to this swarm, run the following command:
+
+    docker swarm join --token SWMTKN-1-348u9em9op8fs9hrzg0cghtibsy4ipxiz7buip99i0fm1zsays-alitqcu4hqwpddahjeaie9otf 192.168.0.18:2377
+
+[node1] (local) root@192.168.0.18 ~
+$ docker swarm join --token SWMTKN-1-348u9em9op8fs9hrzg0cghtibsy4ipxiz7buip99i0fm1zsays-alitqcu4hqwpddahjeaie9otf 192.168.0.18:2377
+Error response from daemon: This node is already part of a swarm. Use "docker swarm leave" to leave this swarm and join another one.
+[node1] (local) root@192.168.0.18 ~
+$
+[node1] (local) root@192.168.0.18 ~
+$
+[node1] (local) root@192.168.0.18 ~
+$ docker node ls
+ID                            HOSTNAME            STATUS              AVAILABILITY        MANAGER STATUS      ENGINE VERSION
+jlwwu0jz5iqgb7ovt02sgdi8q *   node1               Ready               Active              Leader      18.06.1-ce
+[node1] (local) root@192.168.0.18 ~
+$
+[node1] (local) root@192.168.0.18 ~
+$
+[node1] (local) root@192.168.0.18 ~
+$
+[node1] (local) root@192.168.0.18 ~
+$ docker node ls
+ID                            HOSTNAME            STATUS AVAILABILITY        MANAGER STATUS      ENGINE VERSION
+jlwwu0jz5iqgb7ovt02sgdi8q *   node1               Ready Active              Leader              18.06.1-ce
+971c708fmstky35ijvl4wbm7m     node2               Ready Active                                  18.06.1-ce
+st28cihifv26ftfsbtva92xh1     node3               Ready Active                                  18.06.1-ce
+[node1] (local) root@192.168.0.18 ~
+$ docker node ls
+ID                            HOSTNAME            STATUS              AVAILABILITY        MANAGER STATUS      ENGINE VERSION
+jlwwu0jz5iqgb7ovt02sgdi8q *   node1               Ready               Active              Leader      18.06.1-ce
+971c708fmstky35ijvl4wbm7m     node2               Ready               Active      18.06.1-ce
+st28cihifv26ftfsbtva92xh1     node3               Ready               Active      18.06.1-ce
+[node1] (local) root@192.168.0.18 ~
+$ docker swarm join-token managerTo add a manager to this swarm, run the following command:
+
+    docker swarm join --token SWMTKN-1-348u9em9op8fs9hrzg0cghtibsy4ipxiz7buip99i0fm1zsays-alitqcu4hqwpddahjeaie9otf 192.168.0.18:2377
+
+[node1] (local) root@192.168.0.18 ~
+$
+[node1] (local) root@192.168.0.18 ~
+$
+[node1] (local) root@192.168.0.18 ~
+$ docker node ls
+ID                            HOSTNAME            STATUS              AVAILABILITY        MANAGER STATUS      ENGINE VERSION
+jlwwu0jz5iqgb7ovt02sgdi8q *   node1               Ready               Active              Leader      18.06.1-ce
+971c708fmstky35ijvl4wbm7m     node2               Ready               Active      18.06.1-ce
+st28cihifv26ftfsbtva92xh1     node3               Ready               Active      18.06.1-ce
+ifki21arff4b5ubuydcsjgf0r     node4               Ready               Active              Reachable      18.06.1-ce
+4nj9ee3ybw9gnps5t076enq7e     node5               Ready               Active              Reachable      18.06.1-ce
+[node1] (local) root@192.168.0.18 ~
+$ docker service create --name myhttpd --replicas=10 httpd
+j6cjn911zljppwjqu9yrsdoy8
+overall progress: 10 out of 10 tasks
+1/10: running
+2/10: running
+3/10: running
+4/10: running
+5/10: running
+6/10: running
+7/10: running
+8/10: running
+9/10: running
+10/10: running
+verify: Service converged
+[node1] (local) root@192.168.0.18 ~
+$
+[node1] (local) root@192.168.0.18 ~
+$
+[node1] (local) root@192.168.0.18 ~
+$
+[node1] (local) root@192.168.0.18 ~
+$ docker service ls
+ID                  NAME                MODE                REPLICAS            IMAGE               PORTS
+j6cjn911zljp        myhttpd             replicated          10/10               httpd:latest
+[node1] (local) root@192.168.0.18 ~
+$ docker service update -p 80:80 myhttpd
+unknown shorthand flag: 'p' in -p
+See 'docker service update --help'.
+[node1] (local) root@192.168.0.18 ~
+$ docker service update --publish 80 myhttpd
+unknown flag: --publish
+See 'docker service update --help'.
+[node1] (local) root@192.168.0.18 ~
+$ docker service update --publish-add 80 myhttpd
+myhttpd
+overall progress: 4 out of 10 tasks
+overall progress: 10 out of 10 tasks
+1/10: running
+2/10: running
+3/10: running
+4/10: running
+5/10: running
+6/10: running
+7/10: running
+8/10: running
+9/10: running
+10/10: running
+verify: Service converged
+[node1] (local) root@192.168.0.18 ~
+$
+[node1] (local) root@192.168.0.18 ~
+$
+[node1] (local) root@192.168.0.18 ~
+$
+[node1] (local) root@192.168.0.18 ~
+$
+[node1] (local) root@192.168.0.18 ~
+$ docker service rm myhttpd
+myhttpd
+[node1] (local) root@192.168.0.18 ~
+$ docker service ls
+ID                  NAME                MODE                REPLICAS            IMAGE               PORTS
+[node1] (local) root@192.168.0.18 ~
+$ docker service create --name myhttpd --replicas=10 -p 80:80 httpd
+wg5nt2whtkcxo31r15erpntnp
+overall progress: 10 out of 10 tasks
+1/10: running
+2/10: running
+3/10: running
+4/10: running
+5/10: running
+6/10: running
+7/10: running
+8/10: running
+9/10: running
+10/10: running
+verify: Service converged
+[node1] (local) root@192.168.0.18 ~
+$
+[node1] (local) root@192.168.0.18 ~
+$
+[node1] (local) root@192.168.0.18 ~
+$ docker service ls
+ID                  NAME                MODE                REPLICAS            IMAGE               PORTS
+wg5nt2whtkcx        myhttpd             replicated          10/10               httpd:latest        *:80->80/tcp
+[node1] (local) root@192.168.0.18 ~
+$ docker service ps myhttpd
+ID                  NAME                IMAGE               NODE                DESIRED STATE       CURRENT STATE                ERROR               PORTS
+t52cssdtd25m        myhttpd.1           httpd:latest        node4               Running             Running about a minute ago
+cdqh5ucp07o3        myhttpd.2           httpd:latest        node5               Running             Running about a minute ago
+1at7vzil0knl        myhttpd.3           httpd:latest        node2               Running             Running about a minute ago
+w15u47nnbndf        myhttpd.4           httpd:latest        node2               Running             Running about a minute ago
+bz66umgo12g0        myhttpd.5           httpd:latest        node5               Running             Running about a minute ago
+6v7nhekjozsv        myhttpd.6           httpd:latest        node3               Running             Running about a minute ago
+0pd563j0kx4v        myhttpd.7           httpd:latest        node1               Running             Running about a minute ago
+t34a4ht0x1n6        myhttpd.8           httpd:latest        node3               Running             Running about a minute ago
+x2w2w9wowhka        myhttpd.9           httpd:latest        node4               Running             Running about a minute ago
+rephv9gv3rvk        myhttpd.10          httpd:latest        node1               Running             Running about a minute ago
+[node1] (local) root@192.168.0.18 ~
+$
+[node1] (local) root@192.168.0.18 ~
+$
+[node1] (local) root@192.168.0.18 ~
+$ docker service ps myhttpd
+ID                  NAME                IMAGE               NODE                DESIRED STATE       CURRENT STATE           ERROR               PORTS
+t52cssdtd25m        myhttpd.1           httpd:latest        node4               Running             Running 2 minutes ago
+cdqh5ucp07o3        myhttpd.2           httpd:latest        node5               Running             Running 2 minutes ago
+oc7rajaj0b87        myhttpd.3           httpd:latest        node3               Ready               Ready 3 seconds ago
+1at7vzil0knl         \_ myhttpd.3       httpd:latest        node2               Shutdown            Running 2 minutes ago
+of3d7zcss4is        myhttpd.4           httpd:latest        node4               Ready               Ready 3 seconds ago
+w15u47nnbndf         \_ myhttpd.4       httpd:latest        node2               Shutdown            Running 2 minutes ago
+bz66umgo12g0        myhttpd.5           httpd:latest        node5               Running             Running 2 minutes ago
+6v7nhekjozsv        myhttpd.6           httpd:latest        node3               Running             Running 2 minutes ago
+0pd563j0kx4v        myhttpd.7           httpd:latest        node1               Running             Running 2 minutes ago
+t34a4ht0x1n6        myhttpd.8           httpd:latest        node3               Running             Running 2 minutes ago
+x2w2w9wowhka        myhttpd.9           httpd:latest        node4               Running             Running 2 minutes ago
+rephv9gv3rvk        myhttpd.10          httpd:latest        node1               Running             Running 2 minutes ago
+[node1] (local) root@192.168.0.18 ~
+$ docker volume create portainer_data
+portainer_data
+[node1] (local) root@192.168.0.18 ~
+$ docker run -d -p 9000:9000 --name portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
+Unable to find image 'portainer/portainer:latest' locally
+latest: Pulling from portainer/portainer
+d1e017099d17: Pull complete
+8f8668d9390b: Pull complete
+Digest: sha256:339b6486297050179418c886272f3262794b54513008a7f8e747c5e8f330338d
+Status: Downloaded newer image for portainer/portainer:latest
+6ee77744b7945d91114fb8a7dc399d33fc9e4b8dbf86c02f1128b7da434e0f19
+[node1] (local) root@192.168.0.18 ~
+$
+[node1] (local) root@192.168.0.18 ~
+$
+[node1] (local) root@192.168.0.18 ~
+$ docker ps
+CONTAINER ID        IMAGE                 COMMAND              CREATED             STATUS              PORTS                    NAMES
+6ee77744b794        portainer/portainer   "/portainer"         4 minutes ago       Up 4 minutes        0.0.0.0:9000->9000/tcp   portainer
+779c8a35cb14        httpd:latest          "httpd-foreground"   17 minutes ago      Up 17 minutes       80/tcp                   myhttpd.7.0pd563j0kx4viibeckrlgsbgq
+b1ce30edc70a        httpd:latest          "httpd-foreground"   17 minutes ago      Up 17 minutes       80/tcp                   myhttpd.10.rephv9gv3rvkyp8hk2zzdavw2
+[node1] (local) root@192.168.0.18 ~
+$ docker service update myhttpd=3
+Error: No such service: myhttpd=3
+[node1] (local) root@192.168.0.18 ~
+$ docker swarm  update myhttpd=3
+"docker swarm update" accepts no arguments.
+See 'docker swarm update --help'.
+
+Usage:  docker swarm update [OPTIONS]
+
+Update the swarm
+[node1] (local) root@192.168.0.18 ~
+$ docker service update myhttpd = 3
+"docker service update" requires exactly 1 argument.
+See 'docker service update --help'.
+
+Usage:  docker service update [OPTIONS] SERVICE
+
+Update a service
+[node1] (local) root@192.168.0.18 ~
+$ docker service update --replicas=3 myhttpd
+myhttpd
+overall progress: 3 out of 3 tasks
+1/3: running
+2/3: running
+3/3: running
+verify: Service converged
+[node1] (local) root@192.168.0.18 ~
+$ docker ps
+CONTAINER ID        IMAGE                 COMMAND             CREATED             STATUS              PORTS                    NAMES
+6ee77744b794        portainer/portainer   "/portainer"        14 minutes ago      Up 4 minutes        0.0.0.0:9000->9000/tcp   portainer
+[node1] (local) root@192.168.0.18 ~
+$ docker rm -f 6ee77744b794
+6ee77744b794
+[node1] (local) root@192.168.0.18 ~
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+[node1] (local) root@192.168.0.18 ~
+$ docker run -d -p 9000:9000 --name portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
+e42678f43482308999aafb04b7a21acea38c827fd216be3b743560d36270cb6f
+[node1] (local) root@192.168.0.18 ~
+$ docker psCONTAINER ID        IMAGE                 COMMAND             CREATED             STATUS              PORTS                    NAMES
+e42678f43482        portainer/portainer   "/portainer"        6 seconds ago       Up 5 seconds        0.0.0.0:9000->9000/tcp   portainer
+[node1] (local) root@192.168.0.18 ~
+$
+[node1] (local) root@192.168.0.18 ~
+$
+[node1] (local) root@192.168.0.18 ~
+$

@@ -1,0 +1,75 @@
+//worker token
+docker swarm join --token SWMTKN-1-348u9em9op8fs9hrzg0cghtibsy4ipxiz7buip99i0fm1zsays-5iyebd6b50tgkpgag7u5cm01h 192.168.0.18:2377
+
+docker swarm join-token manager
+
+//manager token
+docker swarm join --token SWMTKN-1-348u9em9op8fs9hrzg0cghtibsy4ipxiz7buip99i0fm1zsays-alitqcu4hqwpddahjeaie9otf 192.168.0.18:2377
+
+docker service create --name myhttpd --replicas=10 -p 80:80 httpd
+docker service update --publish-add 80 myhttpd
+
+docker service 
+
+
+
+
+
+
+
+docker run -d -p 9000:9000 --name portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
+
+
+
+mysql
+AWS
+ec2 instance
+windows machine
+vpc and components
+rds 
+s3 bucket
+sns creating
+sqs
+cloud front
+cloud trele
+cloud watch
+iam rolls policies
+efs
+elpb
+certificate manager
+route 53
+ECS lamda ,ebs
+config
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

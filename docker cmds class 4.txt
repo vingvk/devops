@@ -1,0 +1,163 @@
+[root@ip-172-31-42-210 ~]# history
+    1  yum install docker -y
+    2  service docker status
+    3  service docker start
+    4  service docker status
+    5  docker  images
+    6  docker ps
+    7  docker pull httpd
+    8  docker  images
+    9  docker ps
+   10  docker run -it httpd
+   11  docker ps
+   12  docker ps -a
+   13  docker run -D httpd
+   14  docker run -d httpd
+   15  docker ps
+   16  docker stop fe3d5c614059
+   17  docker ps -a
+   18  docker ps
+   19  history
+   20  docker ps -a
+   21  docker rm fe3d5c614059 00247a0391fa
+   22  docker ps -a
+   23  history
+   24  docker images
+   25  docker rmi httpd
+   26  docker images
+   27  man docker
+   28  q
+   29  clear
+   30  docker images
+   31  docker run -d --name httpd_container_1 httpd
+   32  docker images
+   33  docker ps
+   34  docker rm httpd_container_1 -f
+   35  docker ps -a
+   36  clear
+   37  history
+   38  clear
+   39  history
+   40  ls -l
+   41  ls -a
+   42  ls -lart
+   43  clear
+   44  docker images
+   45  docker ps
+   46  ps -a
+   47  docker ps -a
+   48  clear
+   49  docker run -d -p 81:80 httpd
+   50  docker ps
+   51  docker exec -it e1d78474dd7e /bin/bash/
+   52  docker exec -it e1d78474dd7e /bin/bash
+   53  pwd
+   54  vi index.html
+   55  ls
+   56  docker ps
+   57  docker cp /root/index.html e1d78474dd7e :/usr/local/apache2/htdocs
+   58  docker cp /root/index.html e1d78474dd7e:/usr/local/apache2/htdocs
+   59  docker run -d tomcat
+   60  docker ps
+   61  netstat -an | grep 8081
+   62  netstat -an | grep 81
+   63  docker run -d -p 8081:8080 tomcat
+   64  docker ps
+   65  docker exec -it 918a5b6cef76 /bin/bash
+   66  history
+   67  clear
+   68  docker ps -a
+   69  docker rm -f 918a5b6cef76 e1d78474dd7e
+   70  docker ps -a
+   71  mkdir /gvk
+   72  cd gvk
+   73  docker run -d -p 81:80 -v /gvk:/usr/local/apache2/htdocs httpd
+   74  cd /gvk
+   75  vi index.html
+   76  history
+   77  docker ps -a
+   78  docker exec -it  /bin/bash
+   79  clear
+   80  history
+   81  docker ps -a
+   82  docker exec -it 9d08a8110112 /bin/bash
+   83  history
+   84  ls
+   85  vi index.html
+   86  docker run -d -p 81:80 httpd
+   87  docker ps -a
+   88  docker rm -f $(docker ps -aq)
+   89  docker ps -a
+   90  docker images
+   91  docker rmi -f$(docker images)
+   92  docker rmi -f $(docker images)
+   93  docker images
+   94  clear
+   95  docker run -d -p 81:80 -v /root/index.html:/usr/local/apache2/htdocs httpd
+   96  docker run -d -p 81:80 -v /root/index.html:/usr/local/apache2/htdoc
+   97  docker ps -a
+   98  docker ps -al
+   99  docker ps -aln
+  100  docker ps -al -n
+  101  docker ps  -n
+  102  docker ps -a
+  103  docker exec -it 3b89a670dda3 /bin/bash/
+  104  service httpd start
+  105  docker images
+  106  service docker start
+  107  service docker status
+  108  docker exec -it 3b89a670dda3 /bin/bash/
+  109  docker exec -it 3b89a670dda3
+  110  docker run 3b89a670dda3
+  111  clear
+  112  docker ps -a
+  113  docker rmi -f $(docker images)
+  114  docker ps -a
+  115  docker rm -f $(docker ps -aq)
+  116  clear
+  117  docker images
+  118  clear
+  119  docker run -d -p 81:80 tomcat
+  120  docker images
+  121  docker ps -a
+  122  docker exec -it e9d92a539839 /bin/bash
+  123  ls
+  124  docker cp /root/index.html:/usr/local/tomcat
+  125  docker ps -a
+  126  docker cp /root/index.html e9d92a539839:/usr/local/tomcat
+  127  docker run -d -p 8081:8080 tomcat
+  128  docker cp /root/index.html e9d92a539839:/usr/local/tomcat
+  129  vi index.html
+  130  docker exec -it
+  131  docker exec -it e9d92a539839 /bin/bash
+  132  docker images
+  133  docker rmi tomcat
+  134  docker ps -a
+  135  docker rm -f $(docker ps -aq)
+  136  docker rmi tomcat
+  137  docker images
+  138  docker ps -a
+  139  clear
+  140  docker run -d -p 3306:3306 mysql
+  141  docker ps
+  142  docker ps -a
+  143  docker ps
+  144  docker rm -f 435289bab128
+  145  docker run --name demo_mysql -e MYSQL_ROOT_PASSWORD=vineethg -d -p 3306:3306 mysql
+  146  docker ps
+  147  docker run --name demo_wordpress --link demo_mysql -p 80:80 -d wordpress
+  148  docker ps
+  149  docker exec -it demo_wordpress /bin/bash
+  150  vi docker-compose.yaml
+  151  pwd
+  152  docker-compose up
+  153  sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+  154  sudo chmod +x /usr/local/bin/docker-compose
+  155  sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+  156  docker-compose up
+  157  more docker_compose.yaml
+  158  more docker-compose.yaml
+  159  docker-compose -d up
+  160  docker-compose up -d
+  161  history
+[root@ip-172-31-42-210 ~]#

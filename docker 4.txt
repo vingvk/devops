@@ -1,0 +1,184 @@
+docker run --name demo_mysql -e MYSQL_ROOT_PASSWORD=vineethg -d -p 3306:3306 mysql
+docker run --name demo_wordpress --link demo_mysql -p 80:80 -d wordpress
+version: '3.1'
+
+services:
+
+  wordpress:
+    image: wordpress
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: exampleuser
+      WORDPRESS_DB_PASSWORD: examplepass
+      WORDPRESS_DB_NAME: exampledb
+
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: exampledb
+      MYSQL_USER: exampleuser
+      MYSQL_PASSWORD: examplepass
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+
+[node1] (local) root@192.168.0.28 ~
+$ ###############################################################
+#                          WARNING!!!!                        #
+# This is a sandbox environment. Using personal credentials   #
+# is HIGHLY! discouraged. Any consequences of doing so are    #
+# completely the user's responsibilites.                      #
+#                                                             #
+# The PWD team.                                               #
+###############################################################
+
+[node1] (local) root@192.168.0.28 ~
+$ docker swarm init
+Error response from daemon: could not choose an IP address to advertise since this system has multiple addresses on different interfaces (192.168.0.28 on eth0 and 172.18.0.23 on eth1) - specify one with --advertise-addr
+[node1] (local) root@192.168.0.28 ~
+$ docker swarm init
+Error response from daemon: could not choose an IP address to advertise since this system has multiple addresses on different interfaces (192.168.0.28 on eth0 and 172.18.0.23 on eth1) - specify one with --advertise-addr
+[node1] (local) root@192.168.0.28 ~
+$
+[node1] (local) root@192.168.0.28 ~
+$
+[node1] (local) root@192.168.0.28 ~
+$
+[node1] (local) root@192.168.0.28 ~
+$
+[node1] (local) root@192.168.0.28 ~
+$ docker swarm init --advertise-addr 192.168.0.28
+Swarm initialized: current node (gt0kafpb765rgjgs52b7x1831) is now a manager.
+
+To add a worker to this swarm, run the following command:
+
+    docker swarm join --token SWMTKN-1-6coqfpd221mhepf4wjut2iarjijqj0yk6v3cbcswdeapttbgq1-bypwl9zcq8zc06howhnvmap8u 192.168.0.28:2377
+
+To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
+
+[node1] (local) root@192.168.0.28 ~
+$ docker swarm node ls
+
+Usage:  docker swarm COMMAND
+
+Manage Swarm
+
+Commands:
+  ca          Display and rotate the root CA
+  init        Initialize a swarm
+  join        Join a swarm as a node and/or manager
+  join-token  Manage join tokens
+  leave       Leave the swarm
+  unlock      Unlock swarm
+  unlock-key  Manage the unlock key
+  update      Update the swarm
+
+Run 'docker swarm COMMAND --help' for more information on a command.
+[node1] (local) root@192.168.0.28 ~
+$ docker  node ls
+ID                            HOSTNAME            STATUS              AVAILABILITY        MANAGER STATUS      ENGINE VERSION
+gt0kafpb765rgjgs52b7x1831 *   node1               Ready               Active              Leader      18.06.1-ce
+[node1] (local) root@192.168.0.28 ~
+$ docker swarm join-token manager
+To add a manager to this swarm, run the following command:
+
+    docker swarm join --token SWMTKN-1-6coqfpd221mhepf4wjut2iarjijqj0yk6v3cbcswdeapttbgq1-6sifr0ogzlyz5dtj7gxhfxv8i 192.168.0.28:2377
+
+[node1] (local) root@192.168.0.28 ~
+$ docker swarm join --token SWMTKN-1-6coqfpd221mhepf4wjut2iarjijqj0yk6v3cbcswdeapttbgq1-6sifr0ogzlyz5dtj7gxhfxv8i 192.168.0.28:2377
+Error response from daemon: This node is already part of a swarm. Use "docker swarm leave" to leave this swarm and join another one.
+[node1] (local) root@192.168.0.28 ~
+$ docker  node lsID                            HOSTNAME            STATUS              AVAILABILITY        MANAGER STATUS      ENGINE VERSION
+gt0kafpb765rgjgs52b7x1831 *   node1               Ready               Active              Leader      18.06.1-ce
+[node1] (local) root@192.168.0.28 ~
+$
+[node1] (local) root@192.168.0.28 ~
+$
+[node1] (local) root@192.168.0.28 ~
+$ docker  node lsID                            HOSTNAME            STATUS              AVAILABILITY        MANAGER STATUS      ENGINE VERSION
+gt0kafpb765rgjgs52b7x1831 *   node1               Ready               Active              Leader      18.06.1-ce
+4cz2fafyf6yfel7hfk4t3miq4     node2               Ready               Active      18.06.1-ce
+[node1] (local) root@192.168.0.28 ~
+$
+[node1] (local) root@192.168.0.28 ~
+$
+[node1] (local) root@192.168.0.28 ~
+$ docker  node ls
+ID                            HOSTNAME            STATUS AVAILABILITY        MANAGER STATUS      ENGINE VERSION
+gt0kafpb765rgjgs52b7x1831 *   node1               Ready Active              Leader              18.06.1-ce
+4cz2fafyf6yfel7hfk4t3miq4     node2               Ready Active                                  18.06.1-ce
+[node1] (local) root@192.168.0.28 ~
+$
+[node1] (local) root@192.168.0.28 ~
+$ docker  node ls
+ID                            HOSTNAME            STATUS              AVAILABILITY        MANAGER STATUS      ENGINE VERSION
+gt0kafpb765rgjgs52b7x1831 *   node1               Ready               Active              Leader      18.06.1-ce
+4cz2fafyf6yfel7hfk4t3miq4     node2               Ready               Active      18.06.1-ce
+[node1] (local) root@192.168.0.28 ~
+$
+[node1] (local) root@192.168.0.28 ~
+$
+[node1] (local) root@192.168.0.28 ~
+$ docker node ls
+ID                            HOSTNAME            STATUS              AVAILABILITY        MANAGER STATUS      ENGINE VERSION
+gt0kafpb765rgjgs52b7x1831 *   node1               Ready               Active              Leader      18.06.1-ce
+4cz2fafyf6yfel7hfk4t3miq4     node2               Ready               Active      18.06.1-ce
+aalkqfwdh25456bdkrl2v852k     node3               Ready               Active      18.06.1-ce
+[node1] (local) root@192.168.0.28 ~
+$
+[node1] (local) root@192.168.0.28 ~
+$
+[node1] (local) root@192.168.0.28 ~
+$
+[node1] (local) root@192.168.0.28 ~
+$
+[node1] (local) root@192.168.0.28 ~
+$
+[node1] (local) root@192.168.0.28 ~
+$ docker node ls
+ID                            HOSTNAME            STATUS              AVAILABILITY        MANAGER STATUS      ENGINE VERSION
+gt0kafpb765rgjgs52b7x1831 *   node1               Ready               Active              Leader      18.06.1-ce
+4cz2fafyf6yfel7hfk4t3miq4     node2               Ready               Active      18.06.1-ce
+aalkqfwdh25456bdkrl2v852k     node3               Ready               Active      18.06.1-ce
+dskhqyui952iidm0utmlomsz7     node4               Ready               Active              Reachable      18.06.1-ce
+[node1] (local) root@192.168.0.28 ~
+$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+worker token
+
+
+docker swarm join --token SWMTKN-1-6coqfpd221mhepf4wjut2iarjijqj0yk6v3cbcswdeapttbgq1-bypwl9zcq8zc06howhnvmap8u 192.168.0.28:2377
+
