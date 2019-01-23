@@ -1,0 +1,29 @@
+Access Key ID:
+AKIAJXDM5WVWHRBE4OSQ
+Secret Access Key:
+FPi7cKKvuka62MOgpx1t8JE0dfm0OeDbFkZA80FD 
+
+
+
+us-east-2
+
+ export PATH=$PATH:/root/terraform-dir/
+
+
+
+//key_name = "dec26"
+
+
+
+provider "aws" {
+  access_key = "AKIAJXDM5WVWHRBE4OSQ"
+  secret_key = "FPi7cKKvuka62MOgpx1t8JE0dfm0OeDbFkZA80FD"
+  region = "us-east-2"
+}
+
+resource "aws_instance" "terraform_example" {
+  ami = "ami-0cd3dfa4e37921605"
+  instance_type = "t2.micro"
+  key_name = "dec26"
+}
+

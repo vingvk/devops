@@ -1,0 +1,83 @@
+-> Git is a repository(it stores something when we push into it)
+   and also called as tracking management system and VERSION control system(VCM)
+-> SOURCE CODE MANAGEMENT system(SCM)
+-> Git is an open source
+-> it provides two repositories
+	1.public repo
+	2.private repo
+-> master is a default branch name
+
+
+
+
+
+
+
+-m //message
+-a //add
+-v //shows the remote repository
+ git log --oneline //it shortens the commit id
+
+	           git add		      git commit		       git push
+    working area-------------->stagging area--------------->local repository-------------->remote repository
+
+
+
+
+
+
+
+
+
+
+ 127  git init gitdemo1
+  128  ls -lrt
+  129  cd gitdemo1/
+  130  ls -lrt
+  131  ls-a
+  132  ls -a
+  133  ls -la
+  134  rm .git/
+  135  rm -f .git/
+  136  rm -rf .git/
+  137  ls -la
+  138  git init
+  139  ls -la
+  140  vi file1.txt
+  141  vi file1.txt
+  142  git status
+  143  git add
+  144  git add file1.txt
+  145  git status
+  146  git commit -m "next 100 lines of code"
+  147  git config --global user.email "vineethvinnu34@gmail.com"
+  148  git config --global user.name "vingvk"
+  149  git commit -m "next 100 lines of code"
+  150  git status
+  151  git status
+  152  git add file1.txt
+  153  vi file1.txt
+  154  git add file1.txt
+  155* git commit -m "third 100 lines of code"
+  156  vi file1.txt
+  157  git status
+  158  git commit -m "second 100 lines of code"
+  159  git status
+  160  git log
+  161  git log --oneine
+  162  git log --oneline
+  163  vi file1.txt
+  164  git status
+  165  git commit -am "second 100 lines of code"
+  166  git status
+  167  vi file2.txt
+  168  git status
+  169  git commit -am "1st 100 lines of code" file2.txt
+  170  git commit -a file2.txt -m  "1st 100 lines of code"
+  171  git commit -a file2.txt
+  172  git add file2.txt
+  173  git commit -m "1st 100 lines of code"
+  174  history
+
+
+

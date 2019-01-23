@@ -1,0 +1,20 @@
+      cd /opt/
+     wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" https://download.oracle.com/otn-pub/java/jdk/8u192-b12/750e1c8617c5452694857ad95c3ee230/jdk-8u192-linux-x64.tar.gz
+     yum install wget
+     tar xzf jdk-8u192-linux-x64.tar.gz
+    ls -lrt
+     wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" https://download.oracle.com/otn-pub/java/jdk/8u192-b12/750e1c8617c5452694857ad95c3ee230/jdk-8u192-linux-x64.tar.gz
+     tar xzf jdk-8u192-linux-x64.tar.gz
+     cd /opt/jdk1.8.0_192/
+     alternatives --install /usr/bin/java java /opt/jdk1.8.0_192/bin/java 2
+     alternatives --config java
+     export JAVA_HOME=/opt/jdk1.8.0_192
+    export PATH=$PATH:/opt/jdk1.8.0_192/bin
+   pwd
+     cd /opt/
+     wget ftp://mirror.reverse.net/pub/apache/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.zip
+    unzip apache-maven-3.6.0-bin.zip
+     yum install unzip -y
+    unzip apache-maven-3.6.0-bin.zip
+     export PATH=$PATH:/opt/apache-maven-3.6.0/bin
+     mvn -v

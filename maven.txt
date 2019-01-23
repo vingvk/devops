@@ -1,0 +1,8 @@
+maven life-cycle
+ 
+   	mvn validate
+	mvn clean
+	mvn compile // converts .java to .class files
+	mvn test // does above things
+	mvn package// does above things
+	mvn install // moves generated artifacts to artifacts repository

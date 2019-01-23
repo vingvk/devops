@@ -1,0 +1,33 @@
+
+
+git init mygitproject/
+  128  cd  mygitproject/
+  129  vi demo.txt
+  130  git commit -m "100 lines of code"
+  131  git add demo.txt
+  132  git commit -m "100 lines of code"
+  133  git status
+  134  ls -la
+  135  git remote add origin https://github.com/vingvk/mygitproject.git
+  136  ls -la
+  137  git remote -b
+  138  git remote -v
+  139  git push -u origin master
+  140  git status
+  141  git log --oneline
+  142  vi demo.txt
+  143  git commit -am "few lines of code"
+  144  git status
+  145  git push
+  146  cd ..
+  147  git pull https://github.com/jhipster/jhipster-sample-app.git
+  148  git init Demo3
+  149  cd Demo3/
+  150  git pull https://github.com/jhipster/jhipster-sample-app.git
+  151  ls -la
+  152  vi pom.xml
+  153  cd ..
+  154  git clone https://github.com/jhipster/jhipster-sample-app.git
+  155  ls -la
+  156  pwd
+  157  history

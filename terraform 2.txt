@@ -1,0 +1,101 @@
+
+ 1  yum install aws-cli
+    2  aws
+    3  aws configure
+    4  wget https://releases.hashicorp.com/terraform/0.11.11/terraform_0.11.11_linux_amd64.zip
+    5  mkdir terraform
+    6  cd terraform
+    7  cd ..
+    8  ls -lrt
+    9  rm terraform
+   10  rm -f terraform
+   11  clear
+   12  mv  terraform terraform-dir
+   13  ls
+   14  mv terraform_0.11.11_linux_amd64.zip terraform-dir/
+   15  ls
+   16  cd terraform-dir/
+   17  ls
+   18  terraform --version
+   19  unzip terraform_0.11.11_linux_amd64.zip
+   20  terraform --version
+   21  export PATH=$PATH:/root/
+   22  terraform --version
+   23  unzip terraform_0.11.11_linux_amd64.zip
+   24  clear
+   25  terraform --version
+   26  export PATH=$PATH:/root/terraform-dir/
+   27  terraform --version
+   28  terraform
+   29  clear
+   30  vi create_instance.tf
+   31  ls
+   32  mkdir firsr_project
+   33  mv create_instance.tf firsr_project/
+   34  cd firsr_project/
+   35  ls
+   36  terraform init
+   37  terraform plan
+   38  terraform apply
+   39  terraform destroy
+   40  mkdir project2
+   41  cd project2/
+   42  vi provider.tf
+   43  ls
+   44  vi vars.tf
+   45  ls
+   46  vi Terraform.tfvars
+   47  vi create_inst.tf
+   48  ls
+   49  ls -lrt
+   50  vi Terraform.tfvars
+   51  terraform init
+   52  vi vars.tf
+   53  terraform init
+   54  vi Terraform.tfvars
+   55  vi provider.tf
+   56  terraform apply
+   57  ls
+   58  vi create_inst.tf
+   59  terraform apply
+   60  clear
+   61  ls
+   62  mv Terraform.tfvars terraform.tfvars
+   63  terraform apply
+   64  terraform destroy
+   65  history
+   66  mkdir project3
+   67  cd project3
+   68  vi dec26.pem
+   69  ls
+   70  cd ..
+   71  cd project3/
+   72  pwd
+   73  cd ..
+   74   ls -lrt
+   75  cp terraform.tfvars provider.tf project3/
+   76  mv project3/ ../
+   77  cd ..
+   78   cd project3/
+   79  ls
+   80  vi create_inst.tf
+   81  vi vars.tf
+   82  ls
+   83  pwd
+   84  vi vars.tf
+   85  vi create_inst.tf
+   86  terraform init
+   87  vi create_inst.tf
+   88  vi create_inst.tf vi script.sh
+   89  vi create_inst.tf
+   90  vi script.sh
+   91  terraform init
+   92  terraform apply
+   93  vi create_inst.tf
+   94  vi vars.tf
+   95  vi create_inst.tf
+   96  vi vars.tf
+   97  terraform apply
+   98  history
+
+remote exec provisioner
