@@ -1,0 +1,29 @@
+ohai server
+	it gathers facts of the hosts
+copy resource
+
+/////////////////EXERCISE
+
+if node[platform]=="redhat"
+  package "httpd" do
+    action :install
+  end 
+elsif node[platform]=="ubuntu"
+  package "apache2" do
+    action :install
+  end	
+//////
+cookbook_file '/var/www/customers/public_html/index.php' do
+  source 'index.php'
+  action :create
+end
+///////
+
+templates '/var/www/html/index.html' do
+  source 'index.html'
+end
+//////index.html
+my ip address is<%= node[ipaddress]  =%>
+
+////////exercise 
+create mysql database

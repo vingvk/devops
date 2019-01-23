@@ -1,0 +1,78 @@
+
+Chef Installation steps on RHEL 
+
+1) yum update -y
+2) yum install wget unzip -y
+3) wget https://packages.chef.io/files/stable/chefdk/3.6.57/el/7/chefdk-3.6.57-1.el7.x86_64.rpm
+4) rpm -Uvh chefdk-3.6.57-1.el7.x86_64.rpm // will install rpm binary
+5) chef --version
+
+
+
+
+
+ 
+
+After chefDk is installed on WS and nodes were ready .
+
+step 1`: Create an organisation on your hosted chef. ( https://manage.chef.io )
+step 2 : Download or copy the starter kit of respective organisation onto your Work Station.
+         after downloadling to your laptop copy chef-starter.zip and .pem onto your workstation machine with below 2 commands on gitbash ( your laptop terminal)
+
+          scp -i < path of pem file on your laptop > < path of chef-starter.zip on your laptop > ec2-user@<public-ip of work station>:< workstation path to be copied> 
+               
+          scp -i < path of pem file on your laptop > < path of pem file on your laptop > ec2-user@<public-ip of work station>:< workstation path to be copied>
+
+step 3 : Unzip starter Kit and you will get a folder " chef-repo"
+
+         unzip chef-starter.zip
+
+step 4 : Move into the folder " chef-repo"  and  execute the below commands
+step 5 : Bootstrap your nodes with chef server .
+         
+         knife bootstrap <private ip of node> --ssh-user <default user> --sudo --identity-file
+          <path of node's pem file on WS >  -N " <node name  " 
+
+step 6 : create a cookbook as below  under " cookbooks " direcory .
+       
+         chef generate cookbook < cookbook name >
+
++-- chef-repo
+¦   +-- cookbooks
+¦   ¦   +-- chefignore
+¦   ¦   +-- mycookbook
+¦   ¦   ¦   +-- Berksfile
+¦   ¦   ¦   +-- CHANGELOG.md
+¦   ¦   ¦   +-- chefignore
+¦   ¦   ¦   +-- LICENSE
+¦   ¦   ¦   +-- metadata.rb
+¦   ¦   ¦   +-- README.md
+¦   ¦   ¦   +-- recipes
+¦   ¦   ¦   ¦   +-- default.rb
+¦   ¦   ¦   ¦  
+
+
+step 7 : create a recipe  under recipes directory
+             vi < filename.rb>
+
+package 'httpd'  do
+  action :install
+end
+
+step 8 : upload cookbook 
+
+         knife cookbook upload < your cookbook name > 
+
+step 9 : adding runlist to the nodes .
+
+        knife node run_list add < nodename> 'recipe[<cookbookname>::<recipename>]'
+
+         knife node run_list add mynode1 'recipe[mycookbook::https_install]'
+
+step 10 : we need to wait for the convergence to happen , or we can do forced convergence 
+           by executimg " chef-client" command on the nodes.
+
+
+
+
+

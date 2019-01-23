@@ -1,0 +1,166 @@
+ 1  ls
+    2  vi /etc/hostname
+    3  yum update -y
+    4  yum install wget unzip -y
+    5  wget https://packages.chef.io/files/stable/chefdk/3.6.57/el/7/chefdk-3.6.57-1.el7.x86_64.rpm
+    6  rpm -Uvh chefdk-3.6.57-1.el7.x86_64.rpm
+    7  chef --version
+    8  history
+    9  ls
+   10  cd /tmp/
+   11  ls
+   12  unzip chef-starter.zip
+   13  ls -lrt
+   14  mv chef-repo /root
+   15  cd /root/chef-repo/
+   16  ls
+   17  ls -lrt
+   18  cd cookbooks/
+   19  ls -lrt
+   20  pwd
+   21  cd /root
+   22  cd /root/tmp/
+   23  cd /root/tmp
+   24  ls
+   25  cd chef-repo
+   26  ls
+   27  knife bootstrap 172.31.29.248 --ssh-user ec2-user --sudo --identity-file /tmp/dec26.pem  -N "chefnodedemo"
+   28  history
+   29  cd cookbooks/
+   30  ls
+   31  chef generate cookbook httpd_cookbook
+   32  ls
+   33  cd httpd_cookbook/
+   34  ls -lrt
+   35  cd recipes/
+   36  ls -lrt
+   37  vi install.rb
+   38  ls
+   39  vi install.rb
+   40  knife cookbook upload install.rb
+   41  ls
+   42  cd ..
+   43  ls
+   44  cd recipes/
+   45  cd ..
+   46  ls
+   47  knife cookbook upload httpd_cookbook
+   48  cd recipes/
+   49  ls
+   50  vi install.rb
+   51  knife cookbook upload httpd_cookbook
+   52  history
+   53  ls
+   54  cd chef-repo/cookbooks/
+   55  ls
+   56  cd httpd_cookbook/
+   57  ls
+   58  cd recipes/
+   59  ls
+   60  vi install.rb
+   61  knife cookbook upload httpd_cookbook
+   62  chown
+   63  man chown
+   64  vi install.rb
+   65  knife cookbook upload httpd_cookbook
+   66  ls
+   67  cd chef-repo
+   68  l
+   69  ls
+   70  cd /cook
+   71  cd cookbooks/
+   72  ls
+   73  cd httpd_cookbook/
+   74  ls
+   75  vi install.rb
+   76  cd recipes/
+   77  ls
+   78  vi install.rb
+   79  knife cookbook upload httpd_cookbook
+   80  cd ..
+   81   mkdir templates
+   82  cd templates/
+   83  ls
+   84  vi index.html
+   85  cd ..
+   86  cd recipes/
+   87  ls
+   88  vi index.html
+   89  cat index.html
+   90  rm index.html
+   91  ls
+   92  vi install.rb
+   93  knife cookbook upload httpd_cookbook
+   94  cd ..
+   95  ls
+   96  rmdir templates/
+   97  rmdir -f templates/
+   98  clear
+   99  rmdir -rf templates/
+  100  man rmdir
+  101  ls
+  102  cd templates/
+  103  ls
+  104  vi index.html
+  105  knife cookbook upload httpd_cookbook
+  106  vi index.html
+  107  cd ..
+  108  cd recipes/
+  109  ls
+  110  vi install.rb
+  111  knife cookbook upload httpd_cookbook
+  112  cd ..
+  113  cd templates/
+  114  ls
+  115  cd ..
+  116  cd recipes/
+  117  ls
+  118  vi install.rb
+  119  cd ..
+  120  cd templates/
+  121  ls
+  122  mv index.html index.html.erb
+  123  ls
+  124  knife cookbook upload httpd_cookbook
+  125  cd ..
+  126  cd recipes/
+  127  ls
+  128  vi install.rb
+  129  knife cookbook upload httpd_cookbook
+  130  cd ..
+  131  cd templates/
+  132  vi index.html.erb
+  133  cd ../recipes/
+  134  ls
+  135  knife cookbook upload httpd_cookbook
+  136  history
+/usr/share/tomcat/webapps
+
+https://www.oracle.com/webfolder/technetwork/tutorials/obe/fmw/wls/10g/r3/appdeploy/deploy/deploy_apps/files/version1/benefits.zip
+https://www.oracle.com/webfolder/technetwork/tutorials/obe/fmw/wls/10g/r3/appdeploy/deploy/deploy_apps/files/version2/benefits.zip
+https://www.oracle.com/webfolder/technetwork/tutorials/obe/fmw/wls/12c/03-DeployApps/files/benefits.war
+
+
+
+service "httpd" do
+  action :start
+end
+package "tomcat" do
+  action :install
+end
+service "tomcat" do
+  action :start
+end
+remote_file '/usr/share/tomcat/webapps/benefits.war' do
+  source 'https://www.oracle.com/webfolder/technetwork/tutorials/obe/fmw/wls/12c/03-DeployApps/files/benefits.war'
+    action :create
+end
+cookbook_file '/var/www/html/index.html' do
+  source 'index.html'
+    action :touch
+end
+template '/var/www/html/index.html' do
+  source 'index.html.erb'
+end
+~
+

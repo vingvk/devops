@@ -1,0 +1,23 @@
+->CHEF is a config management tool
+-> it does the following steps : 
+	1.provision
+	2.configure
+	3.deploy &
+	4.manage the resources of IT infrastructure....
+
+
+-> idempotence is the property of certain operations in mathematics and computer science
+ whereby they can be applied multiple times without changing the result beyond the initial
+ application.
+						(or)
+	repeated applying of same config does not effect
+-> every node will have their own runlist.
+
+-> bootstrap 
+	Once the workstation machine is configured, it can be used to install the chef-client
+        on one (or more) nodes across the organization using a knife bootstrap operation. 
+	The knife bootstrap command is used to SSH into the target machine, and then do what
+	 is needed to allow the chef-client to run on the node.
+	//installs the agent on the node
+
+

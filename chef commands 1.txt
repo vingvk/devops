@@ -1,0 +1,70 @@
+    1. ls
+    2.  vi /etc/hostname
+    3.  yum update -y
+    4.  yum install wget unzip -y
+    5.  wget https://packages.chef.io/files/stable/chefdk/3.6.57/el/7/chefdk-3.6.57-1.el7.x86_64.rpm
+    6.  rpm -Uvh chefdk-3.6.57-1.el7.x86_64.rpm
+    7.  chef --version
+    8.  history
+    9.  ls
+   10.  cd /tmp/
+   11.  ls
+   12.  unzip chef-starter.zip
+   13.  ls -lrt
+   14.  mv chef-repo /root
+   15.  cd /root/chef-repo/
+   16.  ls
+   17.  ls -lrt
+   18.  cd cookbooks/
+   19.  ls -lrt
+   20.  pwd
+   21.  cd /root
+   22.  cd /root/tmp/
+   23.  cd /root/tmp
+   24.  ls
+   25.  cd chef-repo
+   26.  ls
+   27.  knife bootstrap 172.31.29.248 --ssh-user ec2-user --sudo --identity-file /tmp/dec26.pem  -N "chefnodedemo"
+   28.  history
+   29.  cd cookbooks/
+   30.  ls
+   31.  chef generate cookbook httpd_cookbook
+   32.  ls
+   33.  cd httpd_cookbook/
+   34.  ls -lrt
+   35.  cd recipes/
+   36.  ls -lrt
+   37.  vi install.rb
+   38.  ls
+   39.  vi install.rb
+   40.  knife cookbook upload install.rb
+   41.  ls
+   42.  cd ..
+   43.  ls
+   44.  cd recipes/
+   45.  cd ..
+   46.  ls
+   47.  knife cookbook upload httpd_cookbook
+   48.  cd recipes/
+   49.  ls
+   50.  vi install.rb
+   51.  knife cookbook upload httpd_cookbook
+   52.  history
+
+
+Nodes
+
+    1.  chef-client
+    2.  ls -lrt
+    3.  chef-client
+    4.  service httpd status
+    5.  vi /etc/hostname
+    6.  service httpd start
+    7.  service httpd status
+    8.  service httpd stop
+    9.  service httpd status
+   10.  chef-client
+   11.  tomcat
+   12.  service tomcat status
+   13.  chef-client
+
