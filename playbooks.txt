@@ -1,0 +1,95 @@
+---
+- hosts: demogroup
+  tasks:
+  - name: installing httpd
+    yum:
+      name: httpd
+      state: present
+  - name: start httpd
+    service:
+      name: httpd
+      state: started
+  - name: example copying file with owner and permissions
+    copy:
+      src: /etc/ansible/index.html
+      dest: /var/www/html/
+
+
+
+
+
+[demouser@ip-172-31-23-98 ansible]$ history
+    1  ssh-keygen
+    2  vi  /etc/yum/pluginconf.d/subscription-manager.conf  and change enable=0  to disabale redhat subscriptions
+    3  ssh-copy-id demouser@172.31.21.12
+    4  ssh 172.31.21.12
+    5  cd /etc/ansible/
+    6  ls
+    7  sudo mv hosts hosts.ori
+    8  ls
+    9  sudo vi hosts
+   10  ansible -m ping
+   11  ansible -m ping 172.31.21.12
+   12  touch mytest.txt
+   13  sudo touch mytest.txt
+   14  scp mytest.txt demouser@172.31.21.12 /home/demouser
+   15  scp mytest.txt demouser@172.31.21.12 :/home/demouser
+   16  scp mytest.txt demouser@172.31.21.12 : /home/demouser
+   17  scp mytest.txt demouser@172.31.21.12:/home/demouser
+   18  ls
+   19  sudo vi playbook.yaml
+   20  ls
+   21  pwd
+   22  sudo vi playbook.yaml
+   23  ansible-playbook -b playbook.yaml
+   24  sudo vi playbook.yaml
+   25  ansible-playbook -b playbook.yaml
+   26  sudo vi playbook.yaml
+   27  ansible-playbook -b playbook.yaml
+   28  sudo vi playbook.yaml
+   29  ansible-playbook -b playbook.yaml
+   30  sudo vi playbook.yaml
+   31  ansible-playbook -b playbook.yaml
+   32  vi hosts
+   33  ls
+   34  vi hosts
+   35  sudo vi hosts
+   36  sudo vi playbook.yaml
+   37  ansible-playbook -b playbook.yaml
+   38  sudo vi playbook.yaml
+   39  ansible-playbook -b playbook.yaml
+   40  sudo ansible-playbook -b playbook.yaml
+   41  sudo vi playbook.yaml
+   42  sudo vi hosts
+   43  sudo ansible-playbook -b playbook.yaml
+   44  ssh 172.31.21.12
+   45  sudo ansible-playbook -b playbook.yaml
+   46  ls
+   47  sudo ansible-playbook -b playbook.retry
+   48  sudo vi playbook.yaml
+   49  ls
+   50  rm playbook.yaml
+   51  sudo rm playbook.yaml
+   52  ls -l
+   53  sudo rm playbook.retry
+   54  ls
+   55  vi hosts.ori
+   56  ls
+   57  sudo rm hosts.ori
+   58  ls
+   59  vi playbooks.yaml
+   60  sudo vi playbooks.yaml
+   61  sudo ansible-playbook -b playbooks.yaml
+   62  sudo vi playbooks.yaml
+   63  sudo ansible-playbook -b playbooks.yaml
+   64  sudo vi hosts
+   65  sudo ansible-playbook -b playbooks.yaml
+   66  sudo ansible-playbook -b playbooks.retry
+   67  sudo vi hosts
+   68  sudo vi playbooks.yaml
+   69  sudo ansible-playbook -b playbooks.yaml
+   70  sudo yum install httpd
+   71  sudo ansible-playbook -b playbooks.yaml
+   72  sudo vi playbooks.yaml
+   73  history
+
