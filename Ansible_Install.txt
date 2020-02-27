@@ -7,7 +7,7 @@ Control  Server (RHEL):
 
         vi  /etc/yum/pluginconf.d/subscription-manager.conf  and change enable=0  to disabale redhat subscriptions.
 
-   1  rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+   1  rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
    2  yum update
    3  yum install ansible
    4  ansible --version
